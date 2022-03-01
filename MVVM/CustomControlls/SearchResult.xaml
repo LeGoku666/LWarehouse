@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="LWarehouse.MVVM.CustomControlls.SearchResult"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LWarehouse.MVVM.CustomControlls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="200">
+    <Grid>
+        <Border x:Name="myBorder" Height="100" Width="200" CornerRadius="10" BorderBrush="Black" BorderThickness="2" Background="#4E99FF">
+            <Grid>
+                <TextBlock Text="Ala ma kota" Height = "23"  
+         HorizontalAlignment = "Center"
+         Margin = "0,5,0,0" x:Name = "textBox_Header"  
+         VerticalAlignment = "Top" Width = "190" TextAlignment="Center" 
+         FontFamily="/Fonts/#Poppins" FontSize="14"/>
+
+                <Separator Margin = "0,25,0,0" Width="175" Background="Black" VerticalAlignment="Top"/>
+                
+            </Grid>
+
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Border.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <Storyboard x:Name="storyboardOnLoadedHeight">
+                                <DoubleAnimation From="0" To="100" Duration="00:00:00.333" 
+                         Storyboard.TargetName="myBorder" 
+                         Storyboard.TargetProperty="Height">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase  EasingMode="EaseIn"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="Border.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <Storyboard x:Name="storyboardOnLoadedWidth">
+                                <DoubleAnimation From="100" To="200" Duration="00:00:00.333" 
+                         Storyboard.TargetName="myBorder" 
+                         Storyboard.TargetProperty="Width">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase  EasingMode="EaseIn"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="Border.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <Storyboard>
+                                <DoubleAnimation From="100" To="110" Duration="00:00:00.333" 
+                         Storyboard.TargetName="myBorder" 
+                         Storyboard.TargetProperty="Height">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="Border.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <Storyboard>
+                                <DoubleAnimation From="200" To="210" Duration="00:00:00.333" 
+                         Storyboard.TargetName="myBorder" 
+                         Storyboard.TargetProperty="Width">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="Border.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <Storyboard>
+                                <DoubleAnimation From="110" To="100" Duration="00:00:00.333" 
+                         Storyboard.TargetName="myBorder" 
+                         Storyboard.TargetProperty="Height">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+
+                <EventTrigger RoutedEvent="Border.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <Storyboard >
+                                <DoubleAnimation From="210" To="200" Duration="00:00:00.333" 
+                         Storyboard.TargetName="myBorder" 
+                         Storyboard.TargetProperty="Width">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+
+        </Border>
+    </Grid>
+</UserControl>

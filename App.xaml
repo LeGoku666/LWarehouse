@@ -1,0 +1,39 @@
+﻿<Application x:Class="LWarehouse.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:LWarehouse"
+             xmlns:viewModel="clr-namespace:LWarehouse.MVVM.ViewModel"
+             xmlns:view="clr-namespace:LWarehouse.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/QuickSearchTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <DataTemplate DataType="{x:Type viewModel:SearchViewModel}">
+                <view:SearchView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AddViewModel}">
+                <view:AddView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:EditViewModel}">
+                <view:EditView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:HomeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AboutViewModel}">
+                <view:AboutView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
