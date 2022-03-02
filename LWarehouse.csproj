@@ -17,12 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="EDB.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="SQL\Tables\" />
   </ItemGroup>
 
@@ -33,7 +27,7 @@
     <Resource Include="Images\x.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="SQL\EDB.db">
+    <Resource Include="EDB.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

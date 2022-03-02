@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LWarehouse.SQL;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -18,6 +19,12 @@ namespace LWarehouse
             InitializeComponent();
             mainWidth = Width;
             mainHeight = Height;
+
+            SQLite sql = new();
+
+            sql.UpdateElement();
+            sql.SelectElement();
+            sql.InsertElement();
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

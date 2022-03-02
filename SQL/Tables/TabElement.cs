@@ -11,6 +11,8 @@ namespace LWarehouse.SQL
     {
         public string Symbol { get; set; }
         public string Warehouse { get; set; }
-        public Image Images { get; set; }
+        public string Komponent { get; set; }
+        public byte[] Image { get; set; }
+        public string Info { get; set; }
     }
 }
