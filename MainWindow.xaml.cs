@@ -24,7 +24,14 @@ namespace LWarehouse
 
             sql.UpdateElement();
             sql.SelectElement();
-            sql.InsertElement();
+
+            TabElement element = new();
+            element.Symbol = "1368486";
+            element.Warehouse = "Technolog";
+            element.Komponent = "Rezystor";
+            element.SetImage = @"Images\x.PNG";
+            element.Info = "Coś tam!";
+            sql.Insert(element);
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
