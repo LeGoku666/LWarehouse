@@ -1,5 +1,6 @@
 ﻿using LWarehouse.SQL;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
@@ -22,8 +23,8 @@ namespace LWarehouse
 
             SQLite sql = new();
 
-            sql.UpdateElement();
-            sql.SelectElement();
+            // sql.UpdateElement();
+            List<TabElement> list = sql.Select();   //TODO
 
             TabElement element = new();
             element.Symbol = "1368486";

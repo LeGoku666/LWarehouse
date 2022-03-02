@@ -17,51 +17,58 @@ namespace LWarehouse.SQL
         {
             if(tab is TabElement)
             {
-               // TabElement element = tab as TabElement;
                 SQLInsert sQLInsert = new();
                 sQLInsert.InsertElement(dataSource, tab as TabElement);
             }
-            //else if(tab is TabLocation)
-            //{
-            //    SQLInsert sQLInsert = new();
-            //    sQLInsert.InsertLocation(dataSource, tab as TabLocation);
-            //}
-            //else if(tab is TabWarehouse)
-            //{
-            //    SQLInsert sQLInsert = new();
-            //    sQLInsert.InsertWarehouse(dataSource, tab as TabWarehouse);
-            //}
-        }
-
-        public void SelectElement()
-        {
-            using var connection = new SqliteConnection(dataSource);
-            connection.Open();
-            var command = connection.CreateCommand();
-
-            command.CommandText =
-            @"
-                    SELECT *
-                    FROM element
-                ";
-
-            using var reader = command.ExecuteReader();
-            while (reader.Read())
+            else if (tab is TabLocation)
             {
-                TabElement element = new();
-                element.Symbol = reader.GetString("symbol");
-                element.Warehouse = reader.GetString("warehouse");
-                element.Komponent = reader.GetString("komponent");
-                element.Info = reader.GetString("info");
-
-                if (!reader.IsDBNull("image"))
-                {
-                    using Stream readStream = reader.GetStream("image");
-                    Stream str = new MemoryStream();
-                    _ = readStream.CopyToAsync(str);
-                }
+                SQLInsert sQLInsert = new();
+                sQLInsert.InsertLocation(dataSource, tab as TabLocation);
+            }
+            else if (tab is TabWarehouse)
+            {
+                SQLInsert sQLInsert = new();
+                sQLInsert.InsertWarehouse(dataSource, tab as TabWarehouse);
             }
         }
+
+        public List<T> Select<T>()
+        {
+            SQLSelect select = new();
+            List<TabElement> list = select.SelectElement(dataSource);
+
+            return (List<T>)Convert.ChangeType(list, typeof(T));
+        }
+
+        //public void SelectElement(string dataSource)
+        //{
+        //    using var connection = new SqliteConnection(dataSource);
+        //    connection.Open();
+        //    var command = connection.CreateCommand();
+
+        //    command.CommandText =
+        //    @"
+        //            SELECT *
+        //            FROM element
+        //        ";
+
+        //    using var reader = command.ExecuteReader();
+        //    while (reader.Read())
+        //    {
+        //        TabElement element = new();
+        //        element.Symbol = reader.GetString("symbol");
+        //        element.Warehouse = reader.GetString("warehouse");
+        //        element.Komponent = reader.GetString("komponent");
+        //        element.Info = reader.GetString("info");
+
+        //        if (!reader.IsDBNull("image"))
+        //        {
+        //            using Stream readStream = reader.GetStream("image");
+        //            Stream str = new MemoryStream();
+        //            _ = readStream.CopyToAsync(str);
+        //        }
+        //    }
+        //}
 
         public void UpdateElement() //TODO update rest
         {

@@ -10,56 +10,42 @@ namespace LWarehouse.SQL
 {
     class SQLInsert
     {
-        public string InsertElement(string dataSource, TabElement element)
+        public string InsertElement(string dataSource, TabElement tab)
         {
-            //TabElement element = new();
-            //element.Symbol = symbol;
-            //element.Warehouse = warehouse;
-            //element.Komponent = komponent;
-            //element.Info = info;
-
-            //if (imagePatch != "")
-            //{
-            //    try
-            //    {
-            //        //  FileStream inputStream = new(@"Images\x.PNG", FileMode.Open);
-            //        FileStream inputStream = new(imagePatch, FileMode.Open);
-
-            //        element.Image = new byte[inputStream.Length];
-
-            //        inputStream.Read(element.Image, 0, element.Image.Length);
-            //        inputStream.Close();
-            //    }
-            //    catch
-            //    {
-            //        return "Image file not found!";
-            //    }
-            //}
-
             using var connection = new SqliteConnection(dataSource);
             connection.Open();
             var command = connection.CreateCommand();
 
-            string cmd = $"INSERT INTO element ({ReturnTableNameIfNotNull(element.Symbol, "symbol")}" +
-                                                $"{ReturnTableNameIfNotNull(element.Warehouse, "warehouse")}" +
-                                                $"{ReturnTableNameIfNotNull(element.Komponent, "komponent")}" +
-                                                $"{ReturnTableNameIfNotNull(element.GetImage, "image")}" +
-                                                $"{ReturnTableNameIfNotNull(element.Info, "info", false)})\n";
+            string cmd = $"INSERT INTO element ({ReturnTableNameIfNotNull(tab.Symbol, "symbol")}" +
+                                                $"{ReturnTableNameIfNotNull(tab.Warehouse, "warehouse")}" +
+                                                $"{ReturnTableNameIfNotNull(tab.Komponent, "komponent")}" +
+                                                $"{ReturnTableNameIfNotNull(tab.GetImage, "image")}" +
+                                                $"{ReturnTableNameIfNotNull(tab.Info, "info", false)})\n";
 
-            cmd += $"VALUES ({ReturnValueIfNotNull(element.Symbol)}" +
-                            $"{ReturnValueIfNotNull(element.Warehouse)}" +
-                            $"{ReturnValueIfNotNull(element.Komponent)}" +
-                            $"{ReturnValueIfNotNull(element.GetImage)}" +
-                            $"{ReturnValueIfNotNull(element.Info, false)})";
+            cmd += $"VALUES ({ReturnValueIfNotNull(tab.Symbol)}" +
+                            $"{ReturnValueIfNotNull(tab.Warehouse)}" +
+                            $"{ReturnValueIfNotNull(tab.Komponent)}" +
+                            $"{ReturnValueIfNotNull(tab.GetImage)}" +
+                            $"{ReturnValueIfNotNull(tab.Info, false)})";
 
             command.CommandText = cmd;
 
-            if (element.GetImage != null)
-                command.Parameters.Add("@image", SqliteType.Blob, element.GetImage.Length).Value = element.GetImage;
+            if (tab.GetImage != null)
+                command.Parameters.Add("@image", SqliteType.Blob, tab.GetImage.Length).Value = tab.GetImage;
 
             int count = command.ExecuteNonQuery();
 
             return $"OK, {count} inserted to db.";
+        }
+
+        public string InsertLocation(string dataSource, TabLocation tab)
+        {
+            return "";
+        }
+
+        public string InsertWarehouse(string dataSource, TabWarehouse tab)
+        {
+            return "";
         }
 
         private string ReturnValueIfNotNull<T>(T value, bool adComma = true)
