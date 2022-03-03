@@ -21,18 +21,17 @@ namespace LWarehouse
             mainWidth = Width;
             mainHeight = Height;
 
-            SQLite sql = new();
+            //SQLite sql = new();
 
-            // sql.UpdateElement();
-            List<TabElement> list = sql.Select();   //TODO
+            IList<TabElement> list = (IList<TabElement>)SQLite.Select();   
 
             TabElement element = new();
             element.Symbol = "1368486";
             element.Warehouse = "Technolog";
             element.Komponent = "Rezystor";
-            element.SetImage = @"Images\x.PNG";
+            element.SetImageFromPatch = @"Images\x.PNG";
             element.Info = "Coś tam!";
-            sql.Insert(element);
+            SQLite.Insert(element);
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

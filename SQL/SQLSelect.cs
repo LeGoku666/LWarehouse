@@ -11,7 +11,7 @@ namespace LWarehouse.SQL
 {
     class SQLSelect
     {
-        public List<TabElement> SelectElement(string dataSource)
+        public static List<TabElement> SelectElement(string dataSource)
         {
             List<TabElement> list = new();
 
@@ -44,6 +44,7 @@ namespace LWarehouse.SQL
                     using MemoryStream ms = new();
                     _ = readStream.CopyToAsync(ms);
                     byte[] image = ms.ToArray();
+                    element.SetImageFromBytes = image;
                 }
 
                 list.Add(element);

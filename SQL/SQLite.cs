@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using Microsoft.Data.Sqlite;
 using System.IO;
+using System.Collections;
 
 namespace LWarehouse.SQL
 {
@@ -13,31 +14,28 @@ namespace LWarehouse.SQL
     {
         private const string dataSource = @"Data Source=.\EDB.db";
 
-        public void Insert<T>(T tab)
+        public static void Insert<T>(T tab)
         {
             if(tab is TabElement)
             {
-                SQLInsert sQLInsert = new();
-                sQLInsert.InsertElement(dataSource, tab as TabElement);
+                SQLInsert.InsertElement(dataSource, tab as TabElement);
             }
             else if (tab is TabLocation)
             {
-                SQLInsert sQLInsert = new();
-                sQLInsert.InsertLocation(dataSource, tab as TabLocation);
+                SQLInsert.InsertLocation(dataSource, tab as TabLocation);
             }
             else if (tab is TabWarehouse)
             {
-                SQLInsert sQLInsert = new();
-                sQLInsert.InsertWarehouse(dataSource, tab as TabWarehouse);
+                SQLInsert.InsertWarehouse(dataSource, tab as TabWarehouse);
             }
         }
 
-        public List<T> Select<T>()
+        public static IList Select()
         {
-            SQLSelect select = new();
-            List<TabElement> list = select.SelectElement(dataSource);
+           // SQLSelect select = new();
+            IList<TabElement> list = SQLSelect.SelectElement(dataSource);
 
-            return (List<T>)Convert.ChangeType(list, typeof(T));
+            return (IList)list;
         }
 
         //public void SelectElement(string dataSource)
@@ -70,7 +68,7 @@ namespace LWarehouse.SQL
         //    }
         //}
 
-        public void UpdateElement() //TODO update rest
+        public static void UpdateElement() //TODO update rest
         {
             using var connection = new SqliteConnection(dataSource);
             connection.Open();

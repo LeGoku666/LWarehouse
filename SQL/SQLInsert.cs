@@ -10,7 +10,7 @@ namespace LWarehouse.SQL
 {
     class SQLInsert
     {
-        public string InsertElement(string dataSource, TabElement tab)
+        public static string InsertElement(string dataSource, TabElement tab)
         {
             using var connection = new SqliteConnection(dataSource);
             connection.Open();
@@ -38,17 +38,17 @@ namespace LWarehouse.SQL
             return $"OK, {count} inserted to db.";
         }
 
-        public string InsertLocation(string dataSource, TabLocation tab)
+        public static string InsertLocation(string dataSource, TabLocation tab)
         {
             return "";
         }
 
-        public string InsertWarehouse(string dataSource, TabWarehouse tab)
+        public static string InsertWarehouse(string dataSource, TabWarehouse tab)
         {
             return "";
         }
 
-        private string ReturnValueIfNotNull<T>(T value, bool adComma = true)
+        private static string ReturnValueIfNotNull<T>(T value, bool adComma = true)
         {
             string newValue = "";
 
@@ -66,7 +66,7 @@ namespace LWarehouse.SQL
             return newValue;
         }
 
-        private string ReturnTableNameIfNotNull<T>(T value, string tab, bool adComma = true)
+        private static string ReturnTableNameIfNotNull<T>(T value, string tab, bool adComma = true)
         {
             string newValue = "";
 

@@ -13,12 +13,13 @@ namespace LWarehouse.SQL
         public string Symbol { get; set; }
         public string Warehouse { get; set; }
         public string Komponent { get; set; }
-        public string SetImage { set => _image = GetImageFromPatch(value); }
-        public byte[] GetImage { get => _image; }
-        private byte[] _image { get; set; }
+        public string SetImageFromPatch { set => Image = SetImageAsPatch(value); }
+        public byte[] SetImageFromBytes { set => Image = SetImageAsBytes(value); }
+        public byte[] GetImage { get => Image; }
+        private byte[] Image { get; set; }
         public string Info { get; set; }
 
-        private byte[] GetImageFromPatch(string imagePatch)
+        private static byte[] SetImageAsPatch(string imagePatch)
         {
             if (imagePatch == "")
                 return null;
@@ -39,6 +40,14 @@ namespace LWarehouse.SQL
             {
                 return null;
             }
+        }
+
+        private static byte[] SetImageAsBytes(byte[] image)
+        {
+            if (image == null || image.Length == 0)
+                return null;
+
+            return image;
         }
     }
 }
