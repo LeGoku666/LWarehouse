@@ -14,8 +14,8 @@
             <Border x:Name="Search_Border" Width="700" Height="60">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#FFFFC35B" Offset="0.0"/>
-                        <GradientStop Color="#FFFFF63A" Offset="1"/>
+                        <GradientStop Color="#7EBC89" Offset="0.0"/>
+                        <GradientStop Color="#FF64976D" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
 

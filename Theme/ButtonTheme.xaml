@@ -24,11 +24,11 @@
                                 <Setter TargetName="border" Property="BorderBrush" Value="Black" />
                                 <Setter Property="Foreground" Value="Black" />
                                 -->
-                                <Setter Property="Background" Value="#4EDD91"/>
+                                <Setter Property="Background" Value="#7EBC89"/>
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#FFFFF63A"/>
+                                <Setter Property="Background" Value="#F95738"/>
                                 <!--
                                 <Setter Property="Background" >
                                     <Setter.Value>
@@ -51,7 +51,7 @@
                 </Setter.Value>
             </Setter>
 
-            <Setter Property="Background" Value="#FFC554"/>
+            <Setter Property="Background" Value="#4EDD91"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontFamily" Value="/Fonts/#Poppins"/>
 

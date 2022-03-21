@@ -8,6 +8,8 @@ namespace LWarehouse
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// 
+    /// https://coolors.co/6f1a07-7ebc89-67597a-ee964b-f95738
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -31,7 +33,7 @@ namespace LWarehouse
             element.Komponent = "Rezystor";
             element.SetImageFromPatch = @"Images\x.PNG";
             element.Info = "Coś tam!";
-            SQLite.Insert(element);
+           // SQLite.Insert(element);
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
