@@ -4,10 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LWarehouse.MVVM.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Background="#FF28291D">
-    <Grid>
-            
-    </Grid>
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             VerticalAlignment="Stretch">
+    
+    <StackPanel Margin="0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="200"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="105"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Symbol" Foreground="white" TextWrapping="Wrap"/>
+            <TextBox Grid.Column="1" Grid.Row="0" x:Name="TextBox_Symbol" Text="" TextWrapping="Wrap" Height="20" VerticalAlignment="Top"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Warehouse" Foreground="white" TextWrapping="Wrap" />
+            <TextBox Grid.Column="1" Grid.Row="1" x:Name="TextBox_Warehouse" Text="" TextWrapping="Wrap"  Height="20" VerticalAlignment="Top"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Komponent" Foreground="white" TextWrapping="Wrap"/>
+            <TextBox Grid.Column="1" Grid.Row="2" x:Name="TextBox_Komponent" Text="" TextWrapping="Wrap"  Height="20" VerticalAlignment="Top"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Info" Foreground="white" TextWrapping="Wrap"/>
+            <TextBox Grid.Column="1" Grid.Row="3" x:Name="TextBox_Info" Text="" TextWrapping="Wrap" Width="200" Height="100" VerticalAlignment="Top"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Image" Foreground="white" TextWrapping="Wrap"/>
+            <Button Grid.Column="1" Grid.Row="4" x:Name="Button_OpenImageFile" Content="Open File" Width="60" HorizontalAlignment="Left"  Height="20" VerticalAlignment="Top"/>
+
+            <Button Grid.Column="1" Grid.Row="6" x:Name="Button_AddKomponent" Content="ADD" Width="60"  Height="20" VerticalAlignment="Top"/>
+        </Grid>
+ 
+    </StackPanel>
 </UserControl>
